@@ -13,6 +13,12 @@ class SLL:
     def insert_at_start(self,data):
         n=Node(data,self.start)
         self.start=n
+    def insert_at_last(self,data):
+        n=Node(data)
+        temp=self.start
+        while temp.next is not None:
+            temp=temp.next
+        temp.next=n
     def search(self,data):
         temp=self.start
         while temp is not None:
@@ -28,7 +34,8 @@ class SLL:
 myList = SLL()
 myList.insert_at_start(5)
 myList.insert_at_start(10)
+myList.insert_at_last(15)
 myList.print_list()
 
-result = myList.search(5)
-print('This value have in list: ',result)
+result = myList.search(15)
+print('\nThis value have in list: ',result)
