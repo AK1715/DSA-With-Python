@@ -13,6 +13,12 @@ class SLL:
     def insert_at_start(self,data):
         n=Node(data,self.start)
         self.start=n
+    def search(self,data):
+        temp=self.start
+        while temp is not None:
+            if temp.item == data:
+                return data
+            temp=temp.next
     def print_list(self):
         temp=self.start
         while temp is not None:
@@ -23,3 +29,6 @@ myList = SLL()
 myList.insert_at_start(5)
 myList.insert_at_start(10)
 myList.print_list()
+
+result = myList.search(5)
+print('This value have in list: ',result)
