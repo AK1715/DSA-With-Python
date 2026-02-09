@@ -16,9 +16,12 @@ class SLL:
     def insert_at_last(self,data):
         n=Node(data)
         temp=self.start
-        while temp.next is not None:
-            temp=temp.next
-        temp.next=n
+        if self.start is not None:
+            while temp.next is not None:
+                temp=temp.next
+            temp.next=n
+        else:
+            temp.next=n
     def search(self,data):
         temp=self.start
         while temp is not None:
