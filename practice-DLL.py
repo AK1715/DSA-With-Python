@@ -7,13 +7,24 @@ class Node:
 class DLL:
     def __init__(self,start=None):
         self.start=start
+    def is_empty(self):
+        return self.start==None
     def insert_at_start(self,data):
-        n=Node(data)
+        n=Node(None,data,self.start)
         if self.start is not None:
             self.start.pre=n
-            n.next=self.start
+        self.start=n
+    def insert_at_last(self,data):
+        n=Node(self.start,data,None)
+        temp=self.start
+        if self.start is not None:
+            while temp.next is not None:
+                temp=temp.next
+            n.pre=temp.item
+            temp.next=n
         else:
-            self.start=n
+            return print("list is empty")
+
     def print_dll(self):
         temp = self.start
         while temp is not None:
@@ -21,5 +32,10 @@ class DLL:
             temp=temp.next
 
 myList = DLL()
+myList.insert_at_start(30)
+myList.insert_at_start(20)
 myList.insert_at_start(10)
+myList.insert_at_last(40)
+myList.insert_at_last(50)
+myList.insert_at_start(5)
 myList.print_dll()
