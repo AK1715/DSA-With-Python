@@ -23,18 +23,22 @@ class DLL:
             n.pre=temp.item
             temp.next=n
         else:
-            return print("list is empty")
+            self.start=n
     def search(self,data):
         if self.start is not None:
             temp=self.start
-            while temp.item is not None:
+            while temp is not None:
                 if temp.item == data:
-                    return temp.item
+                    return temp
                 temp=temp.next
+            return None
     def insert_after(self,afterValue,data):
         n=Node(self.start.pre,data,self.start.next)
-        if self.start is not None:
+        if afterValue is not None:
             temp=self.start
+            if temp.next == None:
+                temp.next=n
+                return
             while temp.next is not None:
                 if temp.item == afterValue:
                     n.pre=temp.item
@@ -42,7 +46,7 @@ class DLL:
                     temp.next=n
                 temp=temp.next 
         else:
-            print("list is empty")
+            print("list is empty",end=" ")
     # def insert_after(self,temp,data):
     #     n=Node(self.start.pre,data,self.start.next)
     #     if temp is not None:
@@ -56,17 +60,41 @@ class DLL:
         while temp is not None:
             print(temp.item, end=' ')
             temp=temp.next
+    def delete_first(self):
+        if self.start is not None:
+            self.start.pre=None
+            self.start=self.start.next
+        else:
+            return print("LL is empty",end=" ")
+            
+    def delete_last(self):
+        temp=self.start
+        if temp is None :
+            return print("LL is empty",end=" ")
+        if temp.next is None :
+            return self.delete_first()
+        while temp.next.next is not None:
+            temp=temp.next
+        
+        temp.next = None
+        # temp = None
+
 
 myList = DLL()
 myList.insert_at_start(30)
 myList.insert_at_start(20)
 myList.insert_at_start(10)
-myList.insert_at_last(40)
-myList.insert_at_last(50)
-myList.insert_after(40,45)
-myList.insert_after(10,15)
-myList.insert_at_start(5)
-# myList.insert_after(myList.search(10),15)
+# myList.insert_at_last(40)
+# myList.insert_at_last(50)
+# myList.insert_after(40,45)
+# myList.insert_after(10,15)
+# myList.insert_at_start(5)
+myList.delete_last()
+myList.delete_last()
+myList.delete_last()
+myList.delete_first()
+
+# myList.insert_after(myList.search(10),15) // if you want to uncomment then also uncomment method 
 myList.print_dll()
 print()
 
