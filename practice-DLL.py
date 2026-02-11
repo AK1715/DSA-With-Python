@@ -24,6 +24,13 @@ class DLL:
             temp.next=n
         else:
             return print("list is empty")
+    def search(self,data):
+        if self.start is not None:
+            temp=self.start
+            while temp.item is not None:
+                if temp.item == data:
+                    return temp.item
+                temp=temp.next
     def insert_after(self,afterValue,data):
         n=Node(self.start.pre,data,self.start.next)
         if self.start is not None:
@@ -48,7 +55,10 @@ myList.insert_at_start(20)
 myList.insert_at_start(10)
 myList.insert_at_last(40)
 myList.insert_at_last(50)
-myList.insert_at_start(5)
 myList.insert_after(40,45)
 myList.insert_after(10,15)
+myList.insert_at_start(5)
 myList.print_dll()
+print()
+
+print("data is present in DLL") if myList.search(15) else print("Not present")
