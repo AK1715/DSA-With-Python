@@ -86,11 +86,11 @@ class DLL:
                 self.start=None
         else:
             temp=self.start
-            if temp.item == data:
-                self.start=temp.next
-                self.start.pre=None
-                return
-            while temp.next is not None:
+            # if temp.item == data:
+            #     self.start=temp.next
+            #     self.start.pre=None
+            #     return
+            while temp is not None:
                 if temp.item == data:
                     if temp.next is not None:
                         temp.next.pre=temp.pre
@@ -98,6 +98,7 @@ class DLL:
                         temp.pre.next=temp.next
                     else:
                         self.start=temp.next
+                    return
                 temp=temp.next
 
 
@@ -105,16 +106,18 @@ myList = DLL()
 myList.insert_at_start(30)
 myList.insert_at_start(20)
 myList.insert_at_start(10)
-myList.insert_at_last(40)
-myList.insert_at_last(50)
+# myList.insert_at_last(40)
+# myList.insert_at_last(50)
 myList.delete_item(10)
-myList.insert_after(40,45)
+myList.delete_item(20)
+myList.delete_item(30)
+# myList.insert_after(40,45)
 # myList.insert_after(10,15)
-myList.insert_at_start(5)
-myList.delete_last()
-myList.delete_last()
-myList.delete_last()
-myList.delete_first()
+# myList.insert_at_start(5)
+# myList.delete_last()
+# myList.delete_last()
+# myList.delete_last()
+# myList.delete_first()
 
 # myList.insert_after(myList.search(10),15) // if you want to uncomment then also uncomment method 
 myList.print_dll()
