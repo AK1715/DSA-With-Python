@@ -78,17 +78,39 @@ class DLL:
         
         temp.next = None
         # temp = None
+    def delete_item(self,data):
+        if self.start is None:
+            pass
+        elif self.start.next is None:
+            if self.start.item==data:
+                self.start=None
+        else:
+            temp=self.start
+            if temp.item == data:
+                self.start=temp.next
+                self.start.pre=None
+                return
+            while temp.next is not None:
+                if temp.item == data:
+                    if temp.next is not None:
+                        temp.next.pre=temp.pre
+                    if temp.pre is not None:
+                        temp.pre.next=temp.next
+                    else:
+                        self.start=temp.next
+                temp=temp.next
 
 
 myList = DLL()
 myList.insert_at_start(30)
 myList.insert_at_start(20)
 myList.insert_at_start(10)
-# myList.insert_at_last(40)
-# myList.insert_at_last(50)
-# myList.insert_after(40,45)
+myList.insert_at_last(40)
+myList.insert_at_last(50)
+myList.delete_item(10)
+myList.insert_after(40,45)
 # myList.insert_after(10,15)
-# myList.insert_at_start(5)
+myList.insert_at_start(5)
 myList.delete_last()
 myList.delete_last()
 myList.delete_last()
