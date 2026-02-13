@@ -73,13 +73,25 @@ class SLL:
             prev=current
             current=next
         self.start=prev
+    def reverse_list_by_item(self,data):
+        prev=None
+        current=self.start
+        while current != None:
+            next=current.next
+            current.next=prev
+            prev=current
+            if data == current.next:
+                break
+            current=next
+        # self.start=prev
 
 myList = SLL()
 # myList.insert_after(5,15)
 myList.insert_at_last(20)
 myList.insert_at_start(10)
 myList.insert_at_start(5)
-myList.reverse_list()
+myList.reverse_list_by_item(20)
+# myList.reverse_list()
 # myList.delete_start()
 # myList.delete_last()
 # myList.delete_last()
