@@ -64,16 +64,26 @@ class SLL:
         while temp is not None:
             print(temp.item, end=' ')
             temp=temp.next
+    def reverse_list(self):
+        prev=None
+        current=self.start
+        while current != None:
+            next = current.next
+            current.next=prev
+            prev=current
+            current=next
+        self.start=prev
 
 myList = SLL()
 # myList.insert_after(5,15)
 myList.insert_at_last(20)
 myList.insert_at_start(10)
 myList.insert_at_start(5)
-myList.delete_start()
-myList.delete_last()
-myList.delete_last()
-myList.delete_last()
+myList.reverse_list()
+# myList.delete_start()
+# myList.delete_last()
+# myList.delete_last()
+# myList.delete_last()
 myList.print_list()
 
 
