@@ -35,8 +35,8 @@ class SLL:
                     if  current.item == data:
                         break
                     current=next
+            self.start.next=next
             self.start=prev
-
 
 myList = SLL()
 myList.insert_at_start(60)
@@ -46,5 +46,5 @@ myList.insert_at_start(30)
 myList.insert_at_start(20)
 myList.insert_at_start(10)
 # myList.reverse_ssl()
-myList.reverse_item(50)
+myList.reverse_item(30)
 myList.print_list()
