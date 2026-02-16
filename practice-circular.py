@@ -23,6 +23,14 @@ class circular:
             n.next=self.last.next
             self.last.next=n
             self.last=n
+    def search(self,data):
+        temp=self.last.next
+        while temp is not None:
+            if temp.item == data:
+                return True
+            if temp == self.last:
+                break
+            temp=temp.next
     def print_all(self):
         temp = self.last.next
         while temp is not None:
@@ -40,3 +48,5 @@ myList.insert_at_start(10)
 myList.insert_at_start(5)
 myList.insert_at_last(40)
 myList.print_all()
+
+print("\nit's present in list") if myList.search(40) else print("\nNot present")
