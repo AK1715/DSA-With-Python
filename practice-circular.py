@@ -31,6 +31,18 @@ class circular:
             if temp == self.last:
                 break
             temp=temp.next
+    def insert_after(self,tempVal,data):
+        if self.last.next is not None:
+            temp=self.last.next
+            n=Node(data)
+            while temp is not None:
+                if temp.item == tempVal:
+                    n.next=self.last.next
+                    self.last.next=n
+                    self.last=n
+                if temp == self.last:
+                    break
+                temp=temp.next
     def print_all(self):
         temp = self.last.next
         while temp is not None:
@@ -47,6 +59,10 @@ myList.insert_at_start(20)
 myList.insert_at_start(10)
 myList.insert_at_start(5)
 myList.insert_at_last(40)
+myList.insert_after(40,25)
+myList.insert_at_start(2)
+myList.insert_at_last(50)
+myList.insert_after(50,60)
 myList.print_all()
 
-print("\nit's present in list") if myList.search(40) else print("\nNot present")
+# print("\nit's present in list") if myList.search(40) else print("\nNot present")
