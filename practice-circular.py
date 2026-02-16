@@ -47,6 +47,12 @@ class circular:
             if self.last is None:
                 return
             self.last.next=self.last.next.next
+    def delete_last(self):
+        temp=self.last.next
+        while temp.next != self.last:
+            temp=temp.next
+        temp.next=self.last.next
+        self.last=temp
     def print_all(self):
         temp = self.last.next
         while temp is not None:
@@ -70,6 +76,7 @@ myList.insert_after(50,60)
 myList.delete_first()
 myList.delete_first()
 myList.insert_at_start(5)
+myList.delete_last()
 myList.print_all()
 
 # print("\nit's present in list") if myList.search(40) else print("\nNot present")
