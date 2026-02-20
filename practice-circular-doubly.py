@@ -1,27 +1,30 @@
 class Node:
-    def __init__(self,prev=None,item=None,next=None):
-        self.prev=prev
+    def __init__(self,item=None,prev=None,next=None):
         self.item=item
+        self.prev=prev
         self.next=next
 class circularDoubly:
     def __init__(self,start=None):
         self.start=start
+    def is_empty(self):
+        return self.start==None
     def insert_at_start(self,data):
-        n=Node(None,data,None)
-        if self.start is not None:
-            n.prev=self.start.prev
+        n=Node(data)
+        if self.is_empty() :
+            n.next=n
+            n.prev=n
+        else:
             n.next=self.start
+            n.prev=self.start.prev
             self.start.prev.next=n
             self.start.prev=n
-            self.start=n
-        else:
-            self.start=n
+        self.start=n
+            
     def print_all(self):
-        temp=self.start
-        while temp.next != self.start:
+        temp=self.start.next
+        print(self.start.item, end=' ')
+        while temp != self.start:
             print(temp.item, end=' ')
-            if temp == self.start.next:
-                break
             temp=temp.next
         
             
