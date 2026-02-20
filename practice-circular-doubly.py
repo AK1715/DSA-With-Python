@@ -51,6 +51,12 @@ class circularDoubly:
                         else:
                             print("bhai tu jo value diya vo list me nai hai")
                     temp=temp.next
+    def delete_first(self):
+            if self.start.next == self.start:
+                print("are bas kr bhai ek last node delete nai hoga")
+            self.start.prev.next=self.start.next
+            self.start.next.prev=self.start.prev
+            self.start=self.start.next
     def print_all(self):
         if self.start is not None:
             temp=self.start.next
@@ -63,10 +69,17 @@ class circularDoubly:
 
 myList = circularDoubly()
 myList.insert_at_start(20)
-# myList.insert_at_start(10)
+myList.insert_at_start(10)
 myList.insert_at_last(30)
-# myList.insert_at_last(40)
+myList.insert_at_last(40)
+myList.insert_at_last(50)
+myList.insert_at_last(60)
 # myList.insert_after(10,15)
-myList.insert_after(10,15)
+myList.delete_first()
+myList.delete_first()
+myList.delete_first()
+myList.delete_first()
+myList.delete_first()
+myList.delete_first()
 
 myList.print_all()
