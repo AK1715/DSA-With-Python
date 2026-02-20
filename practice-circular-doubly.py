@@ -57,6 +57,11 @@ class circularDoubly:
             self.start.prev.next=self.start.next
             self.start.next.prev=self.start.prev
             self.start=self.start.next
+    def delete_last(self):
+        if self.start.next == self.start:
+                print("last node is remaining")
+        self.start.prev.prev.next=self.start
+        self.start.prev=self.start.prev.prev
     def print_all(self):
         if self.start is not None:
             temp=self.start.next
@@ -76,10 +81,6 @@ myList.insert_at_last(50)
 myList.insert_at_last(60)
 # myList.insert_after(10,15)
 myList.delete_first()
-myList.delete_first()
-myList.delete_first()
-myList.delete_first()
-myList.delete_first()
-myList.delete_first()
+myList.delete_last()
 
 myList.print_all()
