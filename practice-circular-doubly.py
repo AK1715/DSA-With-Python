@@ -33,32 +33,39 @@ class circularDoubly:
     def insert_after(self,tempValue,data):
         n=Node(data)
         if tempValue is None:
-            return print("bhaiya kuch value to dedo")
+            return print("bhaiya kuch value to dedo😒😒")
         if self.start is None:
-            print("List empty hai bhai")
+            print("List empty hai bhai😭😭")
             return
         temp=self.start
         while True:
             if temp.item == tempValue:
                 n.next=temp.next
-                n.prev=temp.next
+                n.prev=temp
                 temp.next.prev=n
                 temp.next=n
                 return
             temp=temp.next
             if temp == self.start:
                 break
+        print("value nai mili bhai😭😭")
     def delete_first(self):
+            if self.start is None:
+                return print("List khali hai bhai😭😭")
             if self.start.next == self.start:
-                print("are bas kr bhai ek last node delete nai hoga")
-            self.start.prev.next=self.start.next
-            self.start.next.prev=self.start.prev
-            self.start=self.start.next
+                self.start=None
+            else:
+                self.start.prev.next=self.start.next
+                self.start.next.prev=self.start.prev
+                self.start=self.start.next
     def delete_last(self):
+        if self.start is None:
+            return print("List khali hai bhai😭😭")
         if self.start.next == self.start:
-            print("last node is remaining")
-        self.start.prev.prev.next=self.start
-        self.start.prev=self.start.prev.prev
+            self.start=None
+        else:
+            self.start.prev.prev.next=self.start
+            self.start.prev=self.start.prev.prev
     def delete_item(self,tempValue):
         if self.start == None:
             return
@@ -80,18 +87,18 @@ class circularDoubly:
             temp=temp.next
             if temp == self.start:
                 break
-        print("Value not present")
+        print("Value not present😭😭")
     def search(self,value):
         if self.start is None:
-            return print("bhai list mai kuch nai hai")
+            return print("bhai list mai kuch nai hai😒😒")
         temp=self.start
         while True:
             if temp.item == value:
-                return print("haa bhai value list mai present hai")   
+                return print("haa bhai value list mai present hai😎😎")   
             temp=temp.next
             if temp == self.start:
                 break
-        print("bhai ye value list me nai hai")
+        print("bhai ye value list me nai hai😭😭")
     def print_all(self):
         if self.start is not None:
             temp=self.start.next
