@@ -32,25 +32,22 @@ class circularDoubly:
             self.start=n
     def insert_after(self,tempValue,data):
         n=Node(data)
-        if tempValue is not None:
-            if self.start is None:
-                return print("bhai tera list empty hai")
-            temp=self.start
-            while temp.next != self.start:
-                if temp.item == tempValue:
-                    n.next=temp.next
-                    n.prev=temp.next.prev
-                    temp.next.prev=n
-                    temp.next=n
-                    return
-                else:
-                    if temp.next == self.start:
-                        n.next=self.start
-                        n.prev=self.start.prev
-                        self.start.prev.next=n
-                    else:
-                        print("bhai tu jo value diya vo list me nai hai")
-                temp=temp.next
+        if tempValue is None:
+            return print("bhaiya kuch value to dedo")
+        if self.start is None:
+            print("List empty hai bhai")
+            return
+        temp=self.start
+        while True:
+            if temp.item == tempValue:
+                n.next=temp.next
+                n.prev=temp.next
+                temp.next.prev=n
+                temp.next=n
+                return
+            temp=temp.next
+            if temp == self.start:
+                break
     def delete_first(self):
             if self.start.next == self.start:
                 print("are bas kr bhai ek last node delete nai hoga")
@@ -101,12 +98,9 @@ myList.insert_at_last(30)
 myList.insert_at_last(40)
 myList.insert_at_last(50)
 myList.insert_at_last(60)
-# myList.insert_after(10,15)
+myList.insert_after(60,15)
+myList.insert_after(15,5)
+myList.insert_after(20,25)
 myList.delete_first()
-myList.delete_last()
-myList.delete_item(40)
-myList.delete_item(30)
-myList.delete_item(20)
-myList.delete_item(50)
 
 myList.print_all()
