@@ -81,6 +81,17 @@ class circularDoubly:
             if temp == self.start:
                 break
         print("Value not present")
+    def search(self,value):
+        if self.start is None:
+            return print("bhai list mai kuch nai hai")
+        temp=self.start
+        while True:
+            if temp.item == value:
+                return print("haa bhai value list mai present hai")   
+            temp=temp.next
+            if temp == self.start:
+                break
+        print("bhai ye value list me nai hai")
     def print_all(self):
         if self.start is not None:
             temp=self.start.next
@@ -102,5 +113,5 @@ myList.insert_after(60,15)
 myList.insert_after(15,5)
 myList.insert_after(20,25)
 myList.delete_first()
-
+myList.search(25)
 myList.print_all()
