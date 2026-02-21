@@ -35,22 +35,22 @@ class circularDoubly:
         if tempValue is not None:
             if self.start is None:
                 return print("bhai tera list empty hai")
-            else:
-                temp=self.start
-                while temp.next != self.start:
-                    if temp.item == tempValue:
-                        n.next=temp.next
-                        n.prev=temp.next.prev
-                        temp.next.prev=n
-                        temp.next=n
+            temp=self.start
+            while temp.next != self.start:
+                if temp.item == tempValue:
+                    n.next=temp.next
+                    n.prev=temp.next.prev
+                    temp.next.prev=n
+                    temp.next=n
+                    return
+                else:
+                    if temp.next == self.start:
+                        n.next=self.start
+                        n.prev=self.start.prev
+                        self.start.prev.next=n
                     else:
-                        if temp.next == self.start:
-                            n.next=self.start
-                            n.prev=self.start.prev
-                            self.start.prev.next=n
-                        else:
-                            print("bhai tu jo value diya vo list me nai hai")
-                    temp=temp.next
+                        print("bhai tu jo value diya vo list me nai hai")
+                temp=temp.next
     def delete_first(self):
             if self.start.next == self.start:
                 print("are bas kr bhai ek last node delete nai hoga")
@@ -59,9 +59,31 @@ class circularDoubly:
             self.start=self.start.next
     def delete_last(self):
         if self.start.next == self.start:
-                print("last node is remaining")
+            print("last node is remaining")
         self.start.prev.prev.next=self.start
         self.start.prev=self.start.prev.prev
+    def delete_item(self,tempValue):
+        if self.start == None:
+            return
+        if tempValue is None:
+            return
+        temp=self.start
+        while True:
+            if temp.item == tempValue:
+                if temp.next == self.start:
+                    self.start=None
+                elif temp == self.start:
+                    temp.prev.next=temp.next
+                    temp.next.prev=temp.prev
+                    self.start=temp.next
+                else:
+                    temp.prev.next=temp.next
+                    temp.next.prev=temp.prev
+                return
+            temp=temp.next
+            if temp == self.start:
+                break
+        print("Value not present")
     def print_all(self):
         if self.start is not None:
             temp=self.start.next
@@ -82,5 +104,9 @@ myList.insert_at_last(60)
 # myList.insert_after(10,15)
 myList.delete_first()
 myList.delete_last()
+myList.delete_item(40)
+myList.delete_item(30)
+myList.delete_item(20)
+myList.delete_item(50)
 
 myList.print_all()
